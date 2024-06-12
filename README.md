@@ -22,10 +22,6 @@
 | Visual Studio e VS Code                  | Desenvolvimento                                                |
 | GitHub                                   | Versionamento                                                  |
 
-# 1. Desafio
-
-O SUB DE HACKATON consiste em desenvolver um projeto para seguinte demanda: Sistema de Agendamento de Consultas Médicas
-
 **Requisitos:**
 
 Requisitos:

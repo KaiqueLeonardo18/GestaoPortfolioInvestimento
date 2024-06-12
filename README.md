@@ -68,17 +68,21 @@ Observação: na raiz deste repositório temos a Solution, contendo: um projeto 
 
 - Possui os migrations das entidades para os BDs.
 
+- Interfaces
+
 **Pasta Domain: (GestaoPortfolioInvestimentos.Domain)**
 
 - Contém as definições das tabelas de BD.
-
-- Interfaces utilizada pelo sistema.
+- Enum para utilização do sistema.
+- Schema para validação dos dados.
 
 **Pasta Application: (GestaoPortfolioInvestimentos.Application)**
 
 - Contém as constantes do sistema.
 
-- Models/DTOs.
+- DTOs.
+- Interfaces
+- Services
 
 **Outras pastas: armazenam informações de configurações das IDEs utilizadas.**
 
@@ -111,9 +115,7 @@ Após a verificação dos produtos o cliente pode requisitar o endpoint de **api
 
 Para visualizar o extrato do cliente logado, basta requisitar o endpoint **api/ClienteInvestimento/extratoTransacoes**. OBS Este endpoint é necessário que o usuário com role de **client** esteja logado no sistema.
 
-
-
-4. Referências
+3. Referências
 ASP.NET Core
 
 Introduction to JSON Web Tokens

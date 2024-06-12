@@ -23,11 +23,11 @@
 | GitHub                                   | Versionamento                                                  |
 
 **Requisitos:**
-
-Requisitos:
+- SDK .NET 8
+- SQL Server
 
 ## 1.1. Arquitetura Proposta
-Para concretizar as ideias, foi utilizado a abordagem de arquitetura em camadas ou (Data Layers), de acordo com a seguinte arquitetura: 
+Foi utilizado a abordagem de arquitetura em camadas ou (Data Layers), de acordo com a seguinte arquitetura: 
 
 1: Arquitetura do GestaoPortfolioInvestimentos
 
@@ -35,7 +35,7 @@ A arquitetura do GestaoPortfolioInvestimentos é descrita pelos itens a seguir:
 
 1. Criação do banco e das tabelas
 
-2. A API realiza login do usuário no BD de usuários sql-GPI
+2. A API realiza login do usuário no BD de usuários db-xp
 
 3. O resultado da API é verificado pelo usuário via Swagger ou Postman.
 
@@ -44,7 +44,7 @@ Por fim, apresentamos as entidades criadas, a partir do Migrations e Entity, par
 ## 1.2. Explicação dos Recursos
 A seguir, definimos a função de cada recurso em nossa solução:
 
-- BD SQL: **sql-GPI** - o BD em si, contendo as tabelas GestaoPortfolioInvestimentos.
+- BD SQL: **db-xp** - o BD em si, contendo as tabelas GestaoPortfolioInvestimentos.
 
 ## 1.3. Código Desenvolvido
 Para elucidar o código desenvolvido, fornecemos as informações a seguir, de cada pasta deste repositório.

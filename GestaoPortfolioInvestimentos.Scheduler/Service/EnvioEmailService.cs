@@ -39,22 +39,6 @@ namespace GestaoPortfolioInvestimentos.Scheduler.Service
             return await _httpService.HttpGet<IEnumerable<ProdutoFinanceiro>>("api/ProdutoInvestimento/ProdutosAVencer");
         }
 
-        public async Task<AuthenticateResponse> GetToken(string username, string password)
-        {
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7095/api/auth/login");
-            var content = new StringContent("{\r\n  \"Username\": \"string\",\r\n  \"Password\": \"string\"\r\n}", null, "application/json");
-            var user = new AuthenticateRequest
-            {
-                Username = username,
-                Password = password,
-            };
-            request.Content = content;
-            var response = await client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-            return await _httpService.HttpPost<AuthenticateResponse>("https://localhost:7095/api/Auth/login", user);
-        }
-
         private void EnviarEmailNotificacao(string destinatario, string assunto, string corpo)
         {
             try

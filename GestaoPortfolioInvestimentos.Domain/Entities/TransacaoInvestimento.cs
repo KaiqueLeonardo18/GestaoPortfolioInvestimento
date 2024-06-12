@@ -11,18 +11,52 @@ namespace GestaoPortfolioInvestimentos.Domain.Entities
 {
     public class TransacaoInvestimento
     {
+        /// <summary>
+        /// Id
+        /// </summary>
         [Key]
         public int Id { get; set; }
+
+        /// <summary>
+        /// UserId
+        /// </summary>
         [JsonIgnore]
         public int UserId { get; set; }
+
+        /// <summary>
+        /// User
+        /// </summary>
         public User User { get; set; }
+
+        /// <summary>
+        /// ProdutoFinanceiroId
+        /// </summary>
         [JsonIgnore]
         public int ProdutoFinanceiroId { get; set; }
+
+        /// <summary>
+        /// ProdutoFinanceiro
+        /// </summary>
         public ProdutoFinanceiro ProdutoFinanceiro { get; set; }
+
+        /// <summary>
+        /// DataTransacao
+        /// </summary>
         public DateTime DataTransacao { get; set; }
+
+        /// <summary>
+        /// Quantidade
+        /// </summary>
         public decimal Quantidade { get; set; }
+
+        /// <summary>
+        /// TipoTransacao
+        /// </summary>
         public TipoTransacao TipoTransacao { get; set; }
 
+        /// <summary>
+        /// Construtor da classe
+        /// </summary>
         public TransacaoInvestimento()
         {
             DataTransacao = DateTime.Now;

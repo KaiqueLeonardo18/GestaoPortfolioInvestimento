@@ -7,12 +7,19 @@ using System.Net;
 
 namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
 {
+    /// <summary>
+    /// API para manipulações de Produto de Investimento.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class ProdutoInvestimento : ControllerBase
     {
         private readonly IProdutoFinanceiroService _produtoFinanceiroService;
 
+        /// <summary>
+        /// Construtor da classe
+        /// </summary>
+        /// <param name="produtoFinanceiroService"></param>
         public ProdutoInvestimento(IProdutoFinanceiroService produtoFinanceiroService)
         {
             _produtoFinanceiroService = produtoFinanceiroService;
@@ -29,8 +36,10 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
         {
             try
             {
-                if (dto == null)
-                    return NotFound();
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
 
                 var produto = await _produtoFinanceiroService.Create(dto);
                 return CreatedAtAction(nameof(Create), new { Nome = produto.Nome, produto.Preco }, produto);
@@ -58,8 +67,10 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
         {
             try
             {
-                if (dto == null)
-                    return NotFound();
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
 
                 _produtoFinanceiroService.Update(id, dto);
                 return NoContent();

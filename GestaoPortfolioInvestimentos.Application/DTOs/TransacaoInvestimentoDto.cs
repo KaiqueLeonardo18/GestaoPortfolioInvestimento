@@ -2,6 +2,7 @@
 using GestaoPortfolioInvestimentos.Domain.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -13,7 +14,9 @@ namespace GestaoPortfolioInvestimentos.Application.DTOs
     {
         [JsonIgnore]
         public int UserId { get; set; }
+        [Required(ErrorMessage = "O campo ProdutoId é obrigatório.")]
         public int ProdutoId { get; set; }
+        [Required(ErrorMessage = "O campo Quantidade é obrigatório.")]
         public decimal Quantidade { get; set; }
         public TipoTransacao TipoTransacao { get; set; }
     }

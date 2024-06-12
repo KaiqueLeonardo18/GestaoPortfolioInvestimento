@@ -5,6 +5,9 @@ using System.Net;
 
 namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
 {
+    /// <summary>
+    /// API para manipulações de login e Autorização do usuário
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
@@ -13,6 +16,12 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
         private readonly IPasswordHasher _passwordHasher;
         const string USUARIO_NAO_ENCONTRADO = "Usuário não encontrado";
         const string USUARIO_OU_SENHA_INCORRETA = "Usuário ou senha incorreta!";
+
+        /// <summary>
+        /// Construtor da classe
+        /// </summary>
+        /// <param name="authService"></param>
+        /// <param name="passwordHasher"></param>
         public AuthController(IAuthService authService, IPasswordHasher passwordHasher)
         {
             _authService = authService;
@@ -26,7 +35,7 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
         /// <example>admin ou client</example>
         /// <returns></returns>
         [HttpPost("registrar")]
-        public async Task<IActionResult> Register([FromBody] RegisterUser dto)
+        public async Task<IActionResult> Register([FromBody] RegisterUserDto dto)
         {
             try
             {
@@ -56,6 +65,11 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 var user = await _authService.LoginAsync(dto);
                 if (user == null)
                 {

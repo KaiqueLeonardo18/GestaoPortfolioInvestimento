@@ -9,9 +9,20 @@ namespace GestaoPortfolioInvestimentos.Domain.Entities
 {
     public class ProdutoFinanceiro
     {
+        /// <summary>
+        /// Id
+        /// </summary>
         [Key]
         public int Id { get; set; }
-        public string Nome { get; set; }
+
+        /// <summary>
+        /// Nome
+        /// </summary>
+        public string Nome { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Preco
+        /// </summary>
         public decimal Preco { get; set; }
     }
 }

@@ -8,6 +8,9 @@ using System.Security.Claims;
 
 namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
 {
+    /// <summary>
+    /// API para manipulações de Gestão de Compra e Venda do Cliente
+    /// </summary>
     [Authorize(Roles = "client")]
     [ApiController]
     [Route("api/[controller]")]
@@ -15,6 +18,12 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
     {
         private readonly ITransacaoInvestimentoService _transacaoInvestimentoService;
         private readonly IClienteInvestimentosService _clienteInvestimentosService;
+
+        /// <summary>
+        /// Construtor da classe
+        /// </summary>
+        /// <param name="transacaoInvestimentoService"></param>
+        /// <param name="clienteInvestimentosService"></param>
         public ClienteInvestimentosController(ITransacaoInvestimentoService transacaoInvestimentoService, IClienteInvestimentosService clienteInvestimentosService)
         {
             _transacaoInvestimentoService = transacaoInvestimentoService;
@@ -31,6 +40,11 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 dto.UserId = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value);
                 var transacaoInvestimento = await _clienteInvestimentosService.Create(dto);
 
@@ -62,6 +76,11 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 dto.UserId = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value);
                 var transacaoInvestimento = await _clienteInvestimentosService.VenderProduto(dto);
 
@@ -81,7 +100,7 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
         /// Endpoint para gerar um Extrato das Transações do cliente logado.
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("extratoTransacoes")]
         public async Task<IActionResult> ExtratoTransacoes()
         {
             try

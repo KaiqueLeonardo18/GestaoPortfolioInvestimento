@@ -17,7 +17,7 @@ namespace GestaoPortfolioInvestimentos.Application.Services
             _passwordHasher = passwordHasher;
         }
 
-        public async Task<User> RegisterAsync(RegisterUser dto)
+        public async Task<User> RegisterAsync(RegisterUserDto dto)
         {
             var user = new User { Username = dto.Username, Role = dto.Role};
             user.Password = _passwordHasher.HashPassword(dto.Password);

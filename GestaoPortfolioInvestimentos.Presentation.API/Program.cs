@@ -68,7 +68,7 @@ static void ConfigureSwagger(WebApplicationBuilder builder)
     builder.Services.AddSwaggerGen(c =>
     {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gestao de Portfólios de Investimento", Version = "v1" });
-        c.SchemaFilter<EnumSchemaFilter>();
+        //c.SchemaFilter<EnumSchemaFilter>();
         c.EnableAnnotations();
         c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
         {

@@ -10,7 +10,7 @@ namespace GestaoPortfolioInvestimentos.Application.Interfaces
 {
     public interface IAuthService
     {
-        Task<User> RegisterAsync(RegisterUser registrarUser);
+        Task<User> RegisterAsync(RegisterUserDto registrarUser);
 
         Task<User> LoginAsync(AuthenticateRequest user);
 

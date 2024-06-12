@@ -68,7 +68,7 @@ Observação: na raiz deste repositório temos a Solution, contendo: um projeto 
 
 - Possui os migrations das entidades para os BDs.
 
-**Pasta Domain: (DoctorAppointmentBooking.Domain)**
+**Pasta Domain: (GestaoPortfolioInvestimentos.Domain)**
 
 - Contém as definições das tabelas de BD.
 

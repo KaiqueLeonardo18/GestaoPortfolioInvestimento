@@ -12,7 +12,7 @@ IJobDetail job = JobBuilder.Create<EnvioEmailDiarioJob>()
 ITrigger trigger = TriggerBuilder.Create()
     .WithIdentity("meuTrigger", "grupoTriggers")
     .StartNow()
-    .WithSchedule(CronScheduleBuilder.DailyAtHourAndMinute(17, 06))
+    .WithSchedule(CronScheduleBuilder.DailyAtHourAndMinute(17, 15))
     .Build();
 
 await scheduler.ScheduleJob(job, trigger);

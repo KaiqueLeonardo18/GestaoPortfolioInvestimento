@@ -43,12 +43,16 @@ namespace GestaoPortfolioInvestimentos.Scheduler.Service
         {
             var client = new HttpClient();
             var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7095/api/auth/login");
-            var content = new StringContent("{\r\n  \"Username\": \"teste\",\r\n  \"Password\": \"teste\"\r\n}", null, "application/json");
+            var content = new StringContent("{\r\n  \"Username\": \"string\",\r\n  \"Password\": \"string\"\r\n}", null, "application/json");
+            var user = new AuthenticateRequest
+            {
+                Username = username,
+                Password = password,
+            };
             request.Content = content;
             var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
-            return await _httpService.HttpGet<AuthenticateResponse>("api/Auth/login");
+            return await _httpService.HttpPost<AuthenticateResponse>("https://localhost:7095/api/Auth/login", user);
         }
 
         private void EnviarEmailNotificacao(string destinatario, string assunto, string corpo)

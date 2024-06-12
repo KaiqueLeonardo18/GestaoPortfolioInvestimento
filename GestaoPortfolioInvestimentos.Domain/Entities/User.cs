@@ -20,6 +20,11 @@ namespace GestaoPortfolioInvestimentos.Domain.Entities
         public string Username { get; set; } = string.Empty;
 
         /// <summary>
+        /// email
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
         /// Password
         /// </summary>
         [JsonIgnore]

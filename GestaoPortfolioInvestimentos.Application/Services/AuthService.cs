@@ -20,7 +20,7 @@ namespace GestaoPortfolioInvestimentos.Application.Services
 
         public async Task<User> RegisterAsync(RegisterUserDto dto)
         {
-            var user = new User { Username = dto.Username, Role = dto.Role};
+            var user = new User { Username = dto.Username, Role = dto.Role, Email = dto.email};
  
             user.Password = _passwordHasher.HashPassword(dto.Password);
             var result = await _userRepository.CreateAsync(user);

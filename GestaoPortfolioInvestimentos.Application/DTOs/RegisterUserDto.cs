@@ -7,6 +7,11 @@ namespace GestaoPortfolioInvestimentos.Application.DTOs
     public class RegisterUserDto
     {
         /// <summary>
+        /// email
+        /// </summary>
+        [Required(ErrorMessage = "O campo email é obrigatório.")]
+        public string email { get; set; }
+        /// <summary>
         /// Nome do usuário
         /// </summary>
         [Required(ErrorMessage = "O campo Username é obrigatório.")]

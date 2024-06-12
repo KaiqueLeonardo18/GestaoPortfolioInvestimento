@@ -87,9 +87,10 @@ Observação: na raiz deste repositório temos a Solution, contendo: um projeto 
 Primeiramente é necessário consumir o endpoint **/api/Auth/registrar** para Cadastrar o usuário no sistema. No momento o sistema possui dois tipos de roles de usuário, sendo elas "admin" ou "client".
 Cada uma das roles fornece um acesso a endpoints específicos, Segue uma explicação sobre a descrição de cada role.
 
-1. admin
+- admin
    Essa role permite que os usuários possam gerenciar os produtos de investimentos do sistema, caso o usuário com essa role tente executar outro endpoint a não ser os de **ProdutoInvestimento** receberá uma mensagem de erro por não possuir acesso à outros endpoints.
-2. client
+  
+- client
    Essa role permite que os clientes possam executar ações de COMPRA, VENDA, e o EXTRATO de suas manipulações em produtos de investimento adquiridos e vendidos. , caso o usuário com essa role tente executar outro endpoint a não ser os de **ClienteInvestimentos** receberá uma mensagem de erro por não possuir acesso à outros endpoints.
 
 Após a realização do cadastro do usuário, é ncessário consumir o endpoint de **/api/Auth/login** para que o usuário receba um token de acesso á aplicação.

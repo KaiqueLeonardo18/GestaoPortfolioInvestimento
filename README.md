@@ -85,8 +85,13 @@ Observação: na raiz deste repositório temos a Solution, contendo: um projeto 
 - Services
 
 **Outras pastas: armazenam informações de configurações das IDEs utilizadas.**
+## 2. Manual de execução da aplicação
+Para executar a aplicação, basta colocar o projeto GestaoPortfolioInvestimentos.Presentation.API como Padrão de inicialização, e realizar a troca da connectionString para o usuario do seu BD local que fica localizado em:
+GestaoPortfolioInvestimentos.Presentation.API > appsettings.json
+É necessário trocar apenas o User ID e Password da connectionString
 
-## 2. Manual de utilização da aplicação
+O Sistema automaticamente rodará as migrations e iniciará normalmente
+## 3. Manual de utilização da aplicação
 
 Primeiramente é necessário consumir o endpoint **/api/Auth/registrar** para Cadastrar o usuário no sistema. No momento o sistema possui dois tipos de roles de usuário, sendo elas "admin" ou "client".
 Cada uma das roles fornece um acesso a endpoints específicos, Segue uma explicação sobre a descrição de cada role.
@@ -115,7 +120,7 @@ Após a verificação dos produtos o cliente pode requisitar o endpoint de **api
 
 Para visualizar o extrato do cliente logado, basta requisitar o endpoint **api/ClienteInvestimento/extratoTransacoes**. OBS Este endpoint é necessário que o usuário com role de **client** esteja logado no sistema.
 
-3. Referências
+5. Referências
 ASP.NET Core
 
 Introduction to JSON Web Tokens

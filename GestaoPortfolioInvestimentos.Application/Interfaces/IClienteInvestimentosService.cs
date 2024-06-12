@@ -13,5 +13,6 @@ namespace GestaoPortfolioInvestimentos.Application.Interfaces
         Task<ClienteInvestimento> Create(ClienteInvestimentoDto dto);
         Task<bool> VenderProduto(ClienteInvestimentoDto dto);
         Task<IEnumerable<TransacaoInvestimento>> ExtratoList(int userId);
+        Task<IEnumerable<ClienteInvestimento>> ListProdutoCliente(int userId);
     }
 }

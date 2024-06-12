@@ -69,6 +69,11 @@ namespace GestaoPortfolioInvestimentos.Application.Services
             return await _clienteInvestimentosRepository.GetById(id);
         }
 
+        public async Task<IEnumerable<ClienteInvestimento>> ListProdutoCliente(int userId)
+        {
+            return await _clienteInvestimentosRepository.ListProdutoCliente(userId);
+        }
+
         public async Task<IEnumerable<TransacaoInvestimento>> ExtratoList(int userId)
         {
             return await _transacaoInvestimentoService.ExtratoList(userId);

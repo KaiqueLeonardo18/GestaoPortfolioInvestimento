@@ -11,5 +11,7 @@ namespace GestaoPortfolioInvestimentos.Infrastructure.Interfaces
     {
         Task<ClienteInvestimento> GetById(int id);
         Task Remove(ClienteInvestimento clienteInvestimento);
+
+        Task<IEnumerable<ClienteInvestimento>> ListProdutoCliente(int userId);
     }
 }

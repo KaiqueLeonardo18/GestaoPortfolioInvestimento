@@ -117,5 +117,23 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
                 return StatusCode(500, HttpStatusCode.BadGateway);
             }
         }
+
+        [HttpGet("listaProdutosCliente")]
+        public async Task<IActionResult> ListarProdutosAtivos()
+        {
+            try
+            {
+                var userId = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value);
+                return Ok(await _clienteInvestimentosService.ListProdutoCliente(userId));
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return StatusCode(403, HttpStatusCode.Forbidden);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, HttpStatusCode.BadGateway);
+            }
+        }
     }
 }

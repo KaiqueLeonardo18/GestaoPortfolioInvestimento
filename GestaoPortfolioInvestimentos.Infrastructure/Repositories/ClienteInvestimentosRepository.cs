@@ -24,6 +24,11 @@ namespace GestaoPortfolioInvestimentos.Infrastructure.Repositories
             return await _db.clienteInvestimentos.Include(x => x.ProdutoFinanceiro).Include(x => x.User).FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<IEnumerable<ClienteInvestimento>> ListProdutoCliente(int userId)
+        {
+            return await _db.clienteInvestimentos.Include(x => x.ProdutoFinanceiro).Where(x => x.UserId == userId).ToListAsync();
+        }
+
         public async Task Remove(ClienteInvestimento clienteInvestimentos)
         {
             _db.Remove(clienteInvestimentos);

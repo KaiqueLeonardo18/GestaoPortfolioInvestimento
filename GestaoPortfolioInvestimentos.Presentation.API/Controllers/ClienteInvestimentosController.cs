@@ -1,5 +1,6 @@
 ﻿using GestaoPortfolioInvestimentos.Application.DTOs;
 using GestaoPortfolioInvestimentos.Application.Interfaces;
+using GestaoPortfolioInvestimentos.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -7,8 +8,9 @@ using System.Security.Claims;
 
 namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
 {
+    [Authorize(Roles = "client")]
     [ApiController]
-    [Route("api/teste/[controller]")]
+    [Route("api/[controller]")]
     public class ClienteInvestimentosController : ControllerBase
     {
         private readonly ITransacaoInvestimentoService _transacaoInvestimentoService;
@@ -19,8 +21,13 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
             _clienteInvestimentosService = clienteInvestimentosService;
         }
 
+        /// <summary>
+        /// Endpoint para comprar um Produto de Investimento
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost("comprar")]
-        public async Task<IActionResult> ComprarInvestimento(ClienteInvestimentoDto dto)
+        public async Task<IActionResult> ComprarInvestimento([FromBody] ClienteInvestimentoDto dto)
         {
             try
             {
@@ -39,12 +46,17 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
             {
                 return StatusCode(403, HttpStatusCode.Forbidden);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return StatusCode(500, HttpStatusCode.BadGateway);
             }
         }
 
+        /// <summary>
+        /// Endpoint para Vender um Produto de Investimento
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost("vender")]
         public async Task<IActionResult> VenderInvestimento(ClienteInvestimentoDto dto)
         {
@@ -59,7 +71,29 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
             {
                 return StatusCode(403, HttpStatusCode.Forbidden);
             }
-            catch (Exception ex)
+            catch (Exception)
+            {
+                return StatusCode(500, HttpStatusCode.BadGateway);
+            }
+        }
+
+        /// <summary>
+        /// Endpoint para gerar um Extrato das Transações do cliente logado.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> ExtratoTransacoes()
+        {
+            try
+            {
+                var userId = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value);
+                return Ok(await _transacaoInvestimentoService.ExtratoList(userId));
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return StatusCode(403, HttpStatusCode.Forbidden);
+            }
+            catch (Exception)
             {
                 return StatusCode(500, HttpStatusCode.BadGateway);
             }

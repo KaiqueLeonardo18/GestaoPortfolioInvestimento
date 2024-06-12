@@ -17,5 +17,10 @@ namespace GestaoPortfolioInvestimentos.Infrastructure.Repositories
         {
             _db = sqlDbContext;
         }
+
+        public async Task<IEnumerable<TransacaoInvestimento>> ExtratoList(int userId)
+        {
+            return await _db.transacaoInvestimentos.Include(x => x.ProdutoFinanceiro).Include(x => x.User).ToListAsync();
+        }
     }
 }

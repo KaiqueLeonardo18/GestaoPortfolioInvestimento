@@ -1,7 +1,7 @@
 ﻿using GestaoPortfolioInvestimentos.Application.DTOs;
 using GestaoPortfolioInvestimentos.Application.Interfaces;
 using GestaoPortfolioInvestimentos.Domain.Entities;
-using GestaoPortfolioInvestimentos.Domain.Enum;
+using GestaoPortfolioInvestimentos.Domain.Enums;
 using GestaoPortfolioInvestimentos.Infrastructure.Interfaces;
 using GestaoPortfolioInvestimentos.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -39,6 +39,11 @@ namespace GestaoPortfolioInvestimentos.Application.Services
                 TipoTransacao = tipoTransacao,
                 UserId = userId
             };
+        }
+
+        public async Task<IEnumerable<TransacaoInvestimento>> ExtratoList(int userId)
+        {
+            return await _transacaoInvestimentosRepository.ExtratoList(userId);
         }
     }
 }

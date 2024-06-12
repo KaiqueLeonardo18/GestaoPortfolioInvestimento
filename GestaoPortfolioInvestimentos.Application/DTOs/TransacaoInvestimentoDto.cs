@@ -1,5 +1,5 @@
 ﻿using GestaoPortfolioInvestimentos.Domain.Entities;
-using GestaoPortfolioInvestimentos.Domain.Enum;
+using GestaoPortfolioInvestimentos.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

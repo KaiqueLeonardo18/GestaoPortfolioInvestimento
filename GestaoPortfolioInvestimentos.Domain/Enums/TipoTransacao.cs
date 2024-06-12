@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestaoPortfolioInvestimentos.Domain.Enum
+namespace GestaoPortfolioInvestimentos.Domain.Enums
 {
     public enum TipoTransacao
     {

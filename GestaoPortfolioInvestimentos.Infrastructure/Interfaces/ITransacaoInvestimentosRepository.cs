@@ -9,5 +9,6 @@ namespace GestaoPortfolioInvestimentos.Infrastructure.Interfaces
 {
     public interface ITransacaoInvestimentosRepository : IRepository<TransacaoInvestimento>
     {
+        Task<IEnumerable<TransacaoInvestimento>> ExtratoList(int userId);
     }
 }

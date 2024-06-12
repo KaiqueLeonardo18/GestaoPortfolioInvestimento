@@ -1,7 +1,7 @@
 ﻿using GestaoPortfolioInvestimentos.Application.DTOs;
 using GestaoPortfolioInvestimentos.Application.Interfaces;
 using GestaoPortfolioInvestimentos.Domain.Entities;
-using GestaoPortfolioInvestimentos.Domain.Enum;
+using GestaoPortfolioInvestimentos.Domain.Enums;
 using GestaoPortfolioInvestimentos.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -67,6 +67,11 @@ namespace GestaoPortfolioInvestimentos.Application.Services
         public async Task<ClienteInvestimento> GetById(int id)
         {
             return await _clienteInvestimentosRepository.GetById(id);
+        }
+
+        public async Task<IEnumerable<TransacaoInvestimento>> ExtratoList(int userId)
+        {
+            return await _transacaoInvestimentoService.ExtratoList(userId);
         }
     }
 }

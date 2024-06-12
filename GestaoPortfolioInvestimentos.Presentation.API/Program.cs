@@ -8,7 +8,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using GestaoPortfolioInvestimentos.Application.Interfaces;
-using System.Numerics;
+using System.Text.Json.Serialization;
+using GestaoPortfolioInvestimentos.Domain.Schema;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,12 @@ ConfigureInjection(builder);
 ConfigureJwtSettings(builder);
 ConfigureSwagger(builder);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -26,7 +32,7 @@ await ApplyMigrations(app);
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"));
 }
 
 ConfigureCors(app);
@@ -62,7 +68,8 @@ static void ConfigureSwagger(WebApplicationBuilder builder)
     builder.Services.AddSwaggerGen(c =>
     {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gestao de Portfólios de Investimento", Version = "v1" });
-
+        c.SchemaFilter<EnumSchemaFilter>();
+        c.EnableAnnotations();
         c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
         {
             Name = "Authorization",
@@ -130,8 +137,5 @@ static async Task ApplyMigrations(WebApplication app)
         var services = scope.ServiceProvider;
         var dbContext = services.GetRequiredService<SqlDbContext>();
         await dbContext.Database.MigrateAsync();
-
-        var authDbContext = services.GetRequiredService<SqlDbContext>();
-        await authDbContext.Database.MigrateAsync();
     }
 }

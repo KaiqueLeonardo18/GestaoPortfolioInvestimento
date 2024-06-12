@@ -1,6 +1,6 @@
 ﻿using GestaoPortfolioInvestimentos.Application.DTOs;
 using GestaoPortfolioInvestimentos.Domain.Entities;
-using GestaoPortfolioInvestimentos.Domain.Enum;
+using GestaoPortfolioInvestimentos.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +13,6 @@ namespace GestaoPortfolioInvestimentos.Application.Interfaces
     {
         Task<TransacaoInvestimento> RegistrarTransacao(TransacaoInvestimentoDto dto);
         TransacaoInvestimentoDto MontarDtoTransacaoInvestimento(int produtoId, decimal quantidade, TipoTransacao tipoTransacao, int userId);
+        Task<IEnumerable<TransacaoInvestimento>> ExtratoList(int userId);
     }
 }

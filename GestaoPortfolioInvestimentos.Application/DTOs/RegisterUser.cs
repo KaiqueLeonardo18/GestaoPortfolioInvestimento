@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GestaoPortfolioInvestimentos.Domain.Enums;
+using Swashbuckle.AspNetCore.Annotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace GestaoPortfolioInvestimentos.Application.DTOs
 {
@@ -10,6 +8,8 @@ namespace GestaoPortfolioInvestimentos.Application.DTOs
     {
         public string Username { get; set; }
         public string Password { get; set; }
-        public string Role { get; set; }
+        [Required]
+        [EnumDataType(typeof(Roles), ErrorMessage = "Role must be one of the following: Adm, Doctor, Patient.")]
+        public Roles Role { get; set; }
     }
 }

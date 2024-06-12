@@ -12,6 +12,6 @@ namespace GestaoPortfolioInvestimentos.Infrastructure.Interfaces
     {
         Task<User> CreateAsync(User user);
         Task<User> GetByUsername(string username);
-        Task<bool> ExistsUser(string username, Roles role);
+        Task<bool> ExistsUser(string username);
     }
 }

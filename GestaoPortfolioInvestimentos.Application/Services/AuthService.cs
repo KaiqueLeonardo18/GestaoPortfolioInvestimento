@@ -28,9 +28,9 @@ namespace GestaoPortfolioInvestimentos.Application.Services
             return result;
         }
 
-        public async Task<bool> ExistsUser(string username,Roles role)
+        public async Task<bool> ExistsUser(string username)
         {
-            if (await _userRepository.ExistsUser(username, role))
+            if (await _userRepository.ExistsUser(username))
             {
                 return true;
             }

@@ -15,7 +15,7 @@ namespace GestaoPortfolioInvestimentos.Application.Interfaces
 
         Task<User> LoginAsync(AuthenticateRequest user);
 
-        Task<bool> ExistsUser(string username, Roles role);
+        Task<bool> ExistsUser(string username);
 
         Task<string> GenerateToken(User user);
 

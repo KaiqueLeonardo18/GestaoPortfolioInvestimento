@@ -20,5 +20,13 @@ namespace GestaoPortfolioInvestimentos.Application.DTOs
         /// </summary>
         [Required(ErrorMessage = "O campo Preco é obrigatório.")]
         public decimal Preco { get; set; }
+
+        /// <summary>
+        /// DataVencimento do produto
+        /// </summary>
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessage = "O campo DataVencimento é obrigatório.")]
+        public DateTime DataVencimento { get; set; }
     }
 }

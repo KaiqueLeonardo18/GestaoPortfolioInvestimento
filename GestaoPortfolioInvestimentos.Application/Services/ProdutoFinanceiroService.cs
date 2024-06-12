@@ -31,9 +31,14 @@ namespace GestaoPortfolioInvestimentos.Application.Services
 
         public async Task<ProdutoFinanceiro> Create(ProdutoFinanceiroDto dto)
         {
-            var produto = new ProdutoFinanceiro { Nome = dto.Nome, Preco = dto.Preco };
+            var produto = new ProdutoFinanceiro { Nome = dto.Nome, Preco = dto.Preco , DataVencimento = dto.DataVencimento};
             await _produtoFinanceiroRepository.CreateAsync(produto);
             return produto;
+        }
+
+        public async Task<IEnumerable<ProdutoFinanceiro>> ProdutosAVencer()
+        {
+            return await _produtoFinanceiroRepository.GetServicosAVencer();
         }
 
         public ProdutoFinanceiro Update(int id, ProdutoFinanceiroDto dto)

@@ -11,5 +11,6 @@ namespace GestaoPortfolioInvestimentos.Infrastructure.Interfaces
     public interface IProdutoFinanceiroRepository : IRepository<ProdutoFinanceiro>
     {
         Task<IList<ProdutoFinanceiro>> GetList();
+        Task<IEnumerable<ProdutoFinanceiro>> GetServicosAVencer();
     }
 }

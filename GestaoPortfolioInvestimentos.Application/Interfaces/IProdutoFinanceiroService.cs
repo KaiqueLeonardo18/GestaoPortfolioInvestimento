@@ -14,5 +14,6 @@ namespace GestaoPortfolioInvestimentos.Application.Interfaces
         Task<ProdutoFinanceiro> GetById(int id);
         Task<IList<ProdutoFinanceiro>> List();
         ProdutoFinanceiro Update(int id, ProdutoFinanceiroDto dto);
+        Task<IEnumerable<ProdutoFinanceiro>> ProdutosAVencer();
     }
 }

@@ -45,9 +45,7 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var existsUser = await _authService.ExistsUser(dto.Username, dto.Role);
-
-                if(existsUser)
+                if(await _authService.ExistsUser(dto.Username))
                 {
                     return BadRequest(USUARIO_COM_ESTE_NOME_JA_EXISTE);
                 }
@@ -59,7 +57,6 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
             catch (Exception)
             {
                 return StatusCode(500, HttpStatusCode.BadGateway);
-
             }
         }
 

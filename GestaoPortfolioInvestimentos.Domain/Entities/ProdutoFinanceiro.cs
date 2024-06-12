@@ -16,13 +16,18 @@ namespace GestaoPortfolioInvestimentos.Domain.Entities
         public int Id { get; set; }
 
         /// <summary>
-        /// Nome
+        /// Nome do produto
         /// </summary>
         public string Nome { get; set; } = string.Empty;
 
         /// <summary>
-        /// Preco
+        /// Preco do produto
         /// </summary>
         public decimal Preco { get; set; }
+
+        /// <summary>
+        /// DataVencimento do produto
+        /// </summary>
+        public DateTime DataVencimento { get; set; }
     }
 }

@@ -49,6 +49,7 @@ void ConfigureInjection(WebApplicationBuilder webApplicationBuilder)
     webApplicationBuilder.Services.AddScoped<IProdutoFinanceiroService, ProdutoFinanceiroService>();
     webApplicationBuilder.Services.AddScoped<ITransacaoInvestimentoService, TransacaoInvestimentoService>();
     webApplicationBuilder.Services.AddScoped<IClienteInvestimentosService, ClienteInvestimentosService>();
+    webApplicationBuilder.Services.AddScoped<INotificacaoProdutoVencimentoService, NotificacaoProdutoVencimentoService>();
     webApplicationBuilder.Services.AddTransient<IUserRepository, UserRepository>();
     webApplicationBuilder.Services.AddTransient<IProdutoFinanceiroRepository, ProdutoFinanceiroRepository>();
     webApplicationBuilder.Services.AddTransient<ITransacaoInvestimentosRepository, TransacaoInvestimentosRepository>();

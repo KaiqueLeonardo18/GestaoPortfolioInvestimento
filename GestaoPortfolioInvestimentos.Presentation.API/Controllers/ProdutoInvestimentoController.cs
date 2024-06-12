@@ -12,7 +12,7 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    public class ProdutoInvestimento : ControllerBase
+    public class ProdutoInvestimentoController : ControllerBase
     {
         private readonly IProdutoFinanceiroService _produtoFinanceiroService;
 
@@ -20,7 +20,7 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
         /// Construtor da classe
         /// </summary>
         /// <param name="produtoFinanceiroService"></param>
-        public ProdutoInvestimento(IProdutoFinanceiroService produtoFinanceiroService)
+        public ProdutoInvestimentoController(IProdutoFinanceiroService produtoFinanceiroService)
         {
             _produtoFinanceiroService = produtoFinanceiroService;
         }
@@ -107,6 +107,12 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
             {
                 return StatusCode(500, HttpStatusCode.BadGateway);
             }
+        }
+
+        [HttpGet("ProdutosAVencer")]
+        public async Task<IActionResult> ProdutosAVencer()
+        {
+            return Ok(await _produtoFinanceiroService.ProdutosAVencer());
         }
     }
 }

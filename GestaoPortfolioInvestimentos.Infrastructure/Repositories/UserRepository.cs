@@ -35,9 +35,9 @@ namespace GestaoPortfolioInvestimentos.Infrastructure.Repositories
             return await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
         }
 
-        public async Task<bool> ExistsUser(string username, Roles role)
+        public async Task<bool> ExistsUser(string username)
         {
-            return await _context.Users.AnyAsync(u => u.Username == username && u.Role == role);
+            return await _context.Users.AnyAsync(u => u.Username == username);
         }
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestaoPortfolioInvestimentos.Infrastructure.Migrations
 {
     [DbContext(typeof(SqlDbContext))]
-    [Migration("20240612005214_Inicial")]
+    [Migration("20240612161654_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />
@@ -61,6 +61,9 @@ namespace GestaoPortfolioInvestimentos.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DataVencimento")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Nome")
                         .IsRequired()

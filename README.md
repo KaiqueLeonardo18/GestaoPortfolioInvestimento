@@ -82,7 +82,24 @@ Observação: na raiz deste repositório temos a Solution, contendo: um projeto 
 
 **Outras pastas: armazenam informações de configurações das IDEs utilizadas.**
 
-3. Referências
+## 2. Manual de utilização da aplicação
+
+Primeiramente é necessário consumir o endpoint **/api/Auth/registrar** para Cadastrar o usuário no sistema. No momento o sistema possui dois tipos de roles de usuário, sendo elas "admin" ou "client".
+Cada uma das roles fornece um acesso a endpoints específicos, Segue uma explicação sobre a descrição de cada role.
+
+1. admin
+   Essa role permite que os usuários possam gerenciar os produtos de investimentos do sistema, caso o usuário com essa role tente executar outro endpoint a não ser os de **ProdutoInvestimento** receberá uma mensagem de erro por não possuir acesso à outros endpoints.
+2. client
+   Essa role permite que os clientes possam executar ações de COMPRA, VENDA, e o EXTRATO de suas manipulações em produtos de investimento adquiridos e vendidos. , caso o usuário com essa role tente executar outro endpoint a não ser os de **ClienteInvestimentos** receberá uma mensagem de erro por não possuir acesso à outros endpoints.
+
+Após a realização do cadastro do usuário, é ncessário consumir o endpoint de **/api/Auth/login** para que o usuário receba um token de acesso á aplicação.
+No retorno da requisição, caso o usuário seja encontrado de acordo com as informações de username e password enviados, ele receberá em um campo JSON o token fornecido pela aplicação. Após receber o token é necessário aplicar ele no botão de Authorize do swagger ou pela opção de Authorization do postman. OBS: É necessário apenas copiar o token e colar no input de Authorize(swagger) ou Authorization(POSTMAN), sem a necessidade de incluir a palavra "Bearer" antes do token, apenas o token já será valido pois a aplicação já aplica a palavra "Bearer" por padrão.
+
+Ao realizar a inclusão do token, sendo um usuário com a role de admin, será permitido fazer o gerenciamento dos produtos de investimento do sistema. Para fins de cadastro o usuário poderá consumir o endpoint de /api/ProdutoInvestimento/cadastrar para incluir um produto no sistema.
+
+
+
+4. Referências
 ASP.NET Core
 
 Introduction to JSON Web Tokens

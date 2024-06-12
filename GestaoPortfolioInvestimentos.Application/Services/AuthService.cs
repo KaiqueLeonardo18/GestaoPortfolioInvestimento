@@ -1,6 +1,7 @@
 ﻿using GestaoPortfolioInvestimentos.Application.DTOs;
 using GestaoPortfolioInvestimentos.Application.Interfaces;
 using GestaoPortfolioInvestimentos.Domain.Entities;
+using GestaoPortfolioInvestimentos.Domain.Enums;
 using GestaoPortfolioInvestimentos.Infrastructure.Interfaces;
 
 namespace GestaoPortfolioInvestimentos.Application.Services
@@ -20,10 +21,21 @@ namespace GestaoPortfolioInvestimentos.Application.Services
         public async Task<User> RegisterAsync(RegisterUserDto dto)
         {
             var user = new User { Username = dto.Username, Role = dto.Role};
+ 
             user.Password = _passwordHasher.HashPassword(dto.Password);
             var result = await _userRepository.CreateAsync(user);
 
             return result;
+        }
+
+        public async Task<bool> ExistsUser(string username,Roles role)
+        {
+            if (await _userRepository.ExistsUser(username, role))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public async Task<User> LoginAsync(AuthenticateRequest dto)

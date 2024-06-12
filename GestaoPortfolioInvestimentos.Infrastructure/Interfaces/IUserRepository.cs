@@ -1,4 +1,5 @@
 ﻿using GestaoPortfolioInvestimentos.Domain.Entities;
+using GestaoPortfolioInvestimentos.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace GestaoPortfolioInvestimentos.Infrastructure.Interfaces
     {
         Task<User> CreateAsync(User user);
         Task<User> GetByUsername(string username);
+        Task<bool> ExistsUser(string username, Roles role);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using GestaoPortfolioInvestimentos.Application.DTOs;
 using GestaoPortfolioInvestimentos.Domain.Entities;
+using GestaoPortfolioInvestimentos.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace GestaoPortfolioInvestimentos.Application.Interfaces
         Task<User> RegisterAsync(RegisterUserDto registrarUser);
 
         Task<User> LoginAsync(AuthenticateRequest user);
+
+        Task<bool> ExistsUser(string username, Roles role);
 
         Task<string> GenerateToken(User user);
 

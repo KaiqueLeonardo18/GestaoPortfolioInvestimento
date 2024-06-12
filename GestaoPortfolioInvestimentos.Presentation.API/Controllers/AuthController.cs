@@ -16,6 +16,7 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
         private readonly IPasswordHasher _passwordHasher;
         const string USUARIO_NAO_ENCONTRADO = "Usuário não encontrado";
         const string USUARIO_OU_SENHA_INCORRETA = "Usuário ou senha incorreta!";
+        const string USUARIO_COM_ESTE_NOME_JA_EXISTE = "Usuário com este Username já existe";
 
         /// <summary>
         /// Construtor da classe
@@ -42,6 +43,13 @@ namespace GestaoPortfolioInvestimentos.Presentation.API.Controllers
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(ModelState);
+                }
+
+                var existsUser = await _authService.ExistsUser(dto.Username, dto.Role);
+
+                if(existsUser)
+                {
+                    return BadRequest(USUARIO_COM_ESTE_NOME_JA_EXISTE);
                 }
 
                 var user = await _authService.RegisterAsync(dto);

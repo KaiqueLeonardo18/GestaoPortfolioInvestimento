@@ -95,7 +95,6 @@ static void ConfigureSwagger(WebApplicationBuilder builder)
         }
     });
     });
-
 }
 
 static void ConfigureJwtSettings(WebApplicationBuilder builder)

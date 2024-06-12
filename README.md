@@ -26,7 +26,7 @@
 
 Requisitos:
 
-## 2.1. Arquitetura Proposta
+## 1.1. Arquitetura Proposta
 Para concretizar as ideias, foi utilizado a abordagem de arquitetura em camadas ou (Data Layers), de acordo com a seguinte arquitetura: 
 
 1: Arquitetura do GestaoPortfolioInvestimentos
@@ -41,12 +41,12 @@ A arquitetura do GestaoPortfolioInvestimentos é descrita pelos itens a seguir:
 
 Por fim, apresentamos as entidades criadas, a partir do Migrations e Entity, para persistir as informações de consultas e de usuários.
 
-## 2.2. Explicação dos Recursos
+## 1.2. Explicação dos Recursos
 A seguir, definimos a função de cada recurso em nossa solução:
 
 - BD SQL: **sql-GPI** - o BD em si, contendo as tabelas GestaoPortfolioInvestimentos.
 
-## 2.3. Código Desenvolvido
+## 1.3. Código Desenvolvido
 Para elucidar o código desenvolvido, fornecemos as informações a seguir, de cada pasta deste repositório.
 
 Observação: na raiz deste repositório temos a Solution, contendo: um projeto de API, Application, Domain e Infrastructure.
@@ -82,7 +82,7 @@ Observação: na raiz deste repositório temos a Solution, contendo: um projeto 
 
 **Outras pastas: armazenam informações de configurações das IDEs utilizadas.**
 
-4. Referências
+3. Referências
 ASP.NET Core
 
 Introduction to JSON Web Tokens

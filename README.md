@@ -98,14 +98,14 @@ Após a realização do cadastro do usuário, é ncessário consumir o endpoint 
 No retorno da requisição, caso o usuário seja encontrado de acordo com as informações de username e password enviados, ele receberá em um campo JSON o token fornecido pela aplicação. 
 Após receber o token é necessário aplicar ele no botão de Authorize do swagger ou pela opção de Authorization do postman. OBS: É necessário apenas copiar o token e colar no input de Authorize(swagger) ou Authorization(POSTMAN), sem a necessidade de incluir a palavra "Bearer" antes do token, apenas o token já será valido pois a aplicação já aplica a palavra "Bearer" por padrão.
 
-**admin**
+## **admin**
 Ao realizar a inclusão do token, sendo um usuário com a role de admin, será permitido fazer o gerenciamento dos produtos de investimento do sistema. Para fins de cadastro o usuário poderá consumir o endpoint de **/api/ProdutoInvestimento/cadastrar** para incluir um produto no sistema.
 
 Caso seja necessário, o usuário pode também consumir o endpoint de **/api/ProdutoInvestimento/listarProdutos** para receber uma listagem de todos os produtos de investimento cadastrados no sistema.
 
 Também, é possível consumir o endpoint de **/api/ProdutoInvestimento/{id}** para atualizar um produto de investimento de acordo com a necessidade, alterando-se o seu nome/valor.
 
-**client**
+## **client**
 Um usuário com role de client possui permissão para execução o endpoint de **/api/ProdutoInvestimento/listarProdutos** para visualizar os produtos de investimento disponíveis para compra.
 Após a verificação dos produtos o cliente pode requisitar o endpoint de **api/ClienteInvestimento/comprar** para realizar uma operação de compra de um determinado produto, fornecendo ali o ID do produto e a quantidade.
 
